@@ -1,11 +1,8 @@
 import os
 def get_files_info(working_directory, directory=None):
     abs_allowed_root = os.path.abspath(working_directory)
-    abs_requested_path = os.path.abspath(os.path.join(working_directory, directory)) 
-    project_dir = os.getcwd()
-    full_path = os.path.join(working_directory, directory)
-    abs_working_directory = os.path.join(project_dir,working_directory)
-    abs_full_path = os.path.join(abs_working_directory, directory)
+    abs_requested_path = os.path.abspath(os.path.join(working_directory, directory))
+
     output_lines = []
 
 
@@ -19,7 +16,7 @@ def get_files_info(working_directory, directory=None):
     if directory == ".":
         directory = "current"
     output_lines.append(f"Result for {directory} directory:")
-    
+
     for item in content:
         abs_path_item = os.path.join(abs_requested_path, item)
         output_lines.append(f"- {item}: filesize={os.path.getsize(abs_path_item)} bytes, is_dir={os.path.isdir(abs_path_item)}")
